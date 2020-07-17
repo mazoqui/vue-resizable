@@ -183,9 +183,12 @@
             },
 
             setupDragElements(selector) {
-                const nodeList = this.$el.querySelectorAll(selector);
-                nodeList.forEach(el => {
-                    el.classList.add('drag-el');
+                let nodeList = document.getElementsByClassName("drag-el");
+                while (nodeList.length) nodeList[0].classList.remove("drag-el");
+                
+                nodeList = this.$el.querySelectorAll(selector);
+                nodeList.forEach((el) => {
+                  el.classList.add("drag-el");
                 });
                 this.dragElements = Array.prototype.slice.call(nodeList);
             },
